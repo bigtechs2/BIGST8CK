@@ -109,9 +109,9 @@ async function startBot() {
     if (config.pterodactyl) {
         global.domain = config.pterodactyl.panelUrl;
         global.plta = config.pterodactyl.apiKey;
-        global.eggs = config.pterodactyl.defaultEgg || 1;
-        global.locc = config.pterodactyl.defaultLocation || 1;
-        global.nest = config.pterodactyl.defaultNest || 5;
+        global.eggs = config.pterodactyl.defaultEgg || 0;
+        global.locc = config.pterodactyl.defaultLocation || 0;
+        global.nest = config.pterodactyl.defaultNest || 0;
         log.success("[Pterodactyl] Configuration loaded");
     } else {
         log.warn("[Pterodactyl] No pterodactyl configuration found");
