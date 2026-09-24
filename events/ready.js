@@ -5,19 +5,19 @@ module.exports = (bot) => {
         console.log(util.styleText("blue", "[>]"), `${config.bot.name} by ${config.owner.name}, ready at ${b.user?.id || b.user?.lid}`);
 
         const botDb = bot.getDb("bot");
-        const botRestart = botDb?.restart || {};
-        if (botRestart?.jid && botRestart?.timestamp && botRestart?.readyAt) {
+        const botRestart = botDb.restart || {};
+        if (botRestart?.id && botRestart?.timestamp && botRestart?.readyAt) {
             bot.readyAt = botRestart.readyAt;
             const timeago = bot.format.convertMsToDuration(Date.now() - botRestart.timestamp);
-            await bot.sendMessage(botRestart.jid, {
-                text: bot.format.info(`Restarted successfully! It will take some time. ${timeago}.`),
+            await bot.sendMessage(botRestart.id, {
+                text: bot.format.info(`Restart completed in ${timeago}.`),
                 edit: botRestart.key
             });
             botDb.restart = {};
             botDb.save();
         }
 
-        const groupLink = `https://chat.whatsapp.com/${config.bot?.groupJid ? await b.groupInviteCode(config.bot.groupJid).catch(() => "FxEYZl2UyzAEI2yhaH34Ye") : "FxEYZl2UyzAEI2yhaH34Ye"}`;
+        const groupLink = `https://chat.whatsapp.com/${config.bot?.groupJid ? await b.groupInviteCode(config.bot.groupJid).catch(() => "DilACWwphLt0SBJLNwpY8l") : "DilACWwphLt0SBJLNwpY8l"}`;
         if (!config.bot.groupLink || config.bot.groupLink !== groupLink) config.core.set("bot.groupLink", groupLink);
     });
 };
